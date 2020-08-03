@@ -1,6 +1,8 @@
 ﻿using SalesWebMvc.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace SalesWebMvc.Services
 {
@@ -13,9 +15,9 @@ namespace SalesWebMvc.Services
             _context = context;
         }
 
-        public List<Departament> FindAll()
+        public async Task<List<Departament>> FindAllAsync()
         {
-            return _context.Departament.OrderBy(x => x.Name).ToList();
+            return await _context.Departament.OrderBy(x => x.Name).ToListAsync();
         }
 
         public void Insert(Departament obj)
